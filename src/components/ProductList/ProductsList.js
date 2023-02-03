@@ -1,24 +1,27 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCategory2 } from '../../asyncAction/category';
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
+import { Link } from 'react-router-dom';
+import { fetchProducts } from '../../asyncAction/products';
 
 
-function Category({title}) {
-    let categories = useSelector((store) => store.categories.categories);
+function ProductsList() {
+    let productsList = useSelector((store) => store.products.products);
     let dispatch = useDispatch();
-   
+    useEffect(() => {
+        dispatch(fetchProducts());
+      }, []);
   return (
     <div className='category_part'>
         <div className='category_part_wrapper'>
             <Header/>
       <div className='all_categories'>
         <div>
-          <h3>{title}</h3>
+          <h3>Categories</h3>
         </div>
         <div className="category_types">
-          {categories.map((elem) => (
+          {productsList.map((elem) => (
             <div>
               <img
                 src={`http://localhost:3333${elem.image}`}
@@ -26,7 +29,7 @@ function Category({title}) {
                 width="318"
                 height="330"
               />
-              <a onClick={()=>dispatch(fetchCategory2(elem.id))}>{elem.title}</a>
+              <Link to='/' className="category_text">{elem.title}</Link>
             </div>
           ))}
         </div>
@@ -37,4 +40,4 @@ function Category({title}) {
   )
 }
 
-export default Category
+export default ProductsList

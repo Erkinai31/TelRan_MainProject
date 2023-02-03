@@ -7,7 +7,7 @@ const defaultState = {
 export const categoryReducer = (state = defaultState, action) => {
     switch (action.type) {
         case 'ADD_CATEGORY':
-            return {...state, categories: [...state.categories, ...action.payload]}
+            return {...state, categories: [...action.payload]}
         default:
             return state
     } 

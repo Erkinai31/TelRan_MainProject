@@ -1,6 +1,8 @@
 import Main from "./components/Main/Main";
 import { HashRouter, Route,Routes } from "react-router-dom";
 import Category from "./components/Category/Category";
+import ProductsList from "./components/ProductList/ProductsList";
+import CategoryTypes from "./components/categoryTypes/CategoryTypes";
 
 function App() {
   return (
@@ -9,6 +11,8 @@ function App() {
         <Routes>
           <Route path='/' element={<Main/>}/>
           <Route path='/category' element={<Category/>}/>
+          <Route path='/productsList' element={<ProductsList/>}/>
+          <Route path='/categoryTypes' element={<CategoryTypes/>}/>
         </Routes>
       </HashRouter>
     </div>

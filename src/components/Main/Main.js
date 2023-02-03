@@ -3,10 +3,11 @@ import Header from "../Header/Header";
 import mainImg from "../img/image2.svg";
 import { useSelector, useDispatch } from "react-redux";
 import "./Main.css";
-import { fetchCategory } from "../../asyncAction/category";
+import { fetchCategory} from "../../asyncAction/category";
 import saleImg from "../img/image3.svg";
 import { fetchProducts } from "../../asyncAction/products";
 import Footer from "../Footer/Footer";
+import {Link} from "react-router-dom"
 
 function Main() {
   let categories = useSelector((store) => store.categories.categories);
@@ -22,6 +23,8 @@ function Main() {
   useEffect(() => {
     dispatch(fetchProducts());
   }, []);
+
+  
 
   return (
     <div>
@@ -41,7 +44,7 @@ function Main() {
       <div className="section_two">
         <div className="section_two_wrapper">
           <h3>Categories</h3>
-          <button className="btn_category">All categories</button>
+          <Link to='/category' className="btn_category"> All categories</Link>
         </div>
         <div className="category_types">
           {newCategory.map((elem) => (

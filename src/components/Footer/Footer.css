@@ -1,5 +1,7 @@
+
 .footer {
-  width: 1440px;
+	height: 150px;
+  width:1440px;
 }
 .footer_wrapper {
   display: flex;

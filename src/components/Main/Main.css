@@ -41,10 +41,11 @@ h1 {
   font-size: 12px;
   line-height: 130%;
   text-align: center;
+  text-decoration: none;
   letter-spacing: 0.03em;
   color: #8b8b8b;
   width: 120px;
-  height: 30px;
+  padding:10px;
 }
 h3 {
   font-weight: 700;
