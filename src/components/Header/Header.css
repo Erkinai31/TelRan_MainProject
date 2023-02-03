@@ -41,11 +41,11 @@
 .btn {
   background-color: #339933;
   color: white;
-  width: 129px;
-  height: 49px;
+  padding: 20px;
   border: 2px solid #339933;
   border-radius: 5px;
   font-weight: 700;
   font-size: 16px;
   line-height: 20px;
+  text-decoration: none;
 }

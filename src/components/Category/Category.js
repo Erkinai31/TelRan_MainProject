@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchCategory2 } from '../../asyncAction/category';
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
+import { Link } from 'react-router-dom';
 
 
-function Category({title}) {
+function Category() {
     let categories = useSelector((store) => store.categories.categories);
     let dispatch = useDispatch();
    
@@ -15,7 +16,7 @@ function Category({title}) {
             <Header/>
       <div className='all_categories'>
         <div>
-          <h3>{title}</h3>
+          <h3>Categories</h3>
         </div>
         <div className="category_types">
           {categories.map((elem) => (
@@ -26,7 +27,7 @@ function Category({title}) {
                 width="318"
                 height="330"
               />
-              <a onClick={()=>dispatch(fetchCategory2(elem.id))}>{elem.title}</a>
+              <Link to='/CategoryTypes' onClick={()=>dispatch(fetchCategory2(elem.id))}>{elem.title}</Link>
             </div>
           ))}
         </div>

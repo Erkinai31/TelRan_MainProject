@@ -12,13 +12,13 @@ export default function Header() {
       <div className='header_wrapper'>
         <div className='logo_button'>
           <Link to='/'><img src={logo} alt='logo' width='72' height='72'/></Link>
-        <button className='btn'>Catalog</button>
+        <Link to='/ProductsList' className='btn' >Catalog</Link>
         </div>
         <nav className='menu'>
           <ul className='menu_wrapper'>
             <Link to='/category' className='list'>Categories</Link>
             <li className='list'>Coupon</li>
-            <li className='list'>Stock</li>
+            <Link to='/ProductsList' className='list'>Stock</Link>
             <li className='list'>Contacts</li>
           </ul>
           <img src={basket} alt='basket' width='26.55' height='29.4'/>

@@ -11,3 +11,14 @@ export const fetchProducts = () => {
       })
 }
 }
+
+export const fetchProducts2 = (id) => {
+  return function (dispatch) {
+    let url = `http://localhost:3333/products/${id}`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+      dispatch(AddProductAction(data));
+  });
+}
+}
