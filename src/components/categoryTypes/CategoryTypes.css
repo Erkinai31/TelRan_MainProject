@@ -1,0 +1,10 @@
+.filtration {
+  display: flex;
+  justify-content: space-around;
+}
+.price_filtration input {
+  width: 103px;
+  height: 42px;
+  border: 1px solid #000000;
+  border-radius: 7px;
+}

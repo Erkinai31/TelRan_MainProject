@@ -1,17 +1,41 @@
-import React from 'react'
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCategory2 } from '../../asyncAction/category';
 import Footer from '../Footer/Footer'
 import Header from '../Header/Header'
+import './CategoryTypes.css'
 
 
 export default function CategoryTypes() {
     let categories = useSelector((store) => store.categories.categories);
-    console.log(...categories)
+    let dispatch = useDispatch();
+    useEffect(() => {
+      dispatch(fetchCategory2(1));
+    }, []);
   return (
        <div className='category_part'>
         <div className='category_part_wrapper'>
             <Header/>
       <div className='all_categories'>
+        <div className='filtration'>
+          <div className='price_filtration'>
+            <p>Price</p>
+            <input type='number' placeholder='from'/>
+            <input type='number' placeholder='to'/>
+          </div>
+          <div className='checkbox'>
+            <p>Items on sale</p>
+            <input type='checkbox'/>
+          </div>
+          <div className='select_filtration'>
+            <p>Sort:</p>
+            <select>
+              <option></option>
+            </select>
+          </div>
+           
+        </div>
+       
         <div className="category_types">
           {categories.map((elem) => (
             <div>
