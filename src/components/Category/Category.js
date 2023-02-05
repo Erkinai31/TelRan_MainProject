@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCategory} from '../../asyncAction/category';
+import { fetchCategory, fetchCategory2} from '../../asyncAction/category';
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import { Link } from 'react-router-dom';
@@ -30,7 +30,7 @@ function Category() {
                 width="318"
                 height="330"
               />
-              <Link to='/categoryTypes' className="category_text">{elem.title}</Link>
+              <Link to='/categoryTypes' className="category_text" onClick={()=>dispatch(fetchCategory2(elem.id))}>{elem.title}</Link>
             </div>
           ))}
         </div>

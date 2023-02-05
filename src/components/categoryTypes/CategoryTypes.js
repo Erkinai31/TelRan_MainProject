@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchCategory2 } from '../../asyncAction/category';
+import React from 'react'
+import {useSelector } from 'react-redux';
 import Footer from '../Footer/Footer'
 import Header from '../Header/Header'
 import './CategoryTypes.css'
@@ -8,10 +7,7 @@ import './CategoryTypes.css'
 
 export default function CategoryTypes() {
     let categories = useSelector((store) => store.categories.categories);
-    let dispatch = useDispatch();
-    useEffect(() => {
-      dispatch(fetchCategory2(1));
-    }, []);
+  
   return (
        <div className='category_part'>
         <div className='category_part_wrapper'>
