@@ -1,10 +1,42 @@
 .filtration {
   display: flex;
   justify-content: space-around;
+  margin-bottom: 40px;
 }
-.price_filtration input {
-  width: 103px;
+input {
   height: 42px;
   border: 1px solid #000000;
   border-radius: 7px;
+}
+.price_filtration input {
+  width: 103px;
+}
+.checkbox input {
+  width: 40px;
+}
+.select_filtration select {
+  width: 219px;
+  height: 42px;
+  border: 1px solid #000000;
+  border-radius: 7px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 130%;
+  letter-spacing: 0.03em;
+
+  color: #797979;
+}
+.price_filtration,
+.checkbox,
+.select_filtration {
+  display: flex;
+  justify-content: space-around;
+  width: 280px;
+  align-items: center;
+}
+.filtration p {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 130%;
+  letter-spacing: 0.03em;
 }

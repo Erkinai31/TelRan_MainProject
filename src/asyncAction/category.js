@@ -1,21 +1,10 @@
-import { AddCategoriesAction, AddOneCategoryAction} from "../store/categoryReducer";
+import { baseUrl } from "..";
+import { AddCategoryAction} from "../store/categoryReducer";
 
-export const fetchCategory = () => {
+export const fetchCategory = (id) => {
   return function (dispatch) {
-    let url = "http://localhost:3333/categories/all";
-    fetch(url)
+    fetch(baseUrl + (id !== "all" ? `/categories/${id}` : `/products/all`))
       .then((res) => res.json())
-      .then((data) => dispatch(AddCategoriesAction(data)));
+      .then((data) => dispatch(AddCategoryAction(data)));
   };
 };
-
-export const fetchCategory2 = (id) => {
-  return function (dispatch) {
-    let url = `http://localhost:3333/categories/${id}`;
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
-      dispatch(AddOneCategoryAction(data));
-  });
-}
-}

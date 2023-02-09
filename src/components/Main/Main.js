@@ -3,28 +3,28 @@ import Header from "../Header/Header";
 import mainImg from "../img/image2.svg";
 import { useSelector, useDispatch } from "react-redux";
 import "./Main.css";
-import { fetchCategory} from "../../asyncAction/category";
+import { fetchCategories} from "../../asyncAction/categories";
 import saleImg from "../img/image3.svg";
-import { fetchProducts } from "../../asyncAction/products";
 import Footer from "../Footer/Footer";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
+import { baseUrl } from "../..";
+import { fetchProducts } from "../../asyncAction/products";
 
 function Main() {
-  let categories = useSelector((store) => store.categories.categories);
-  let products = useSelector((store) => store.products.products);
+  let categories = useSelector((store) => store.categoriesList.categoriesList);
+  let products = useSelector((store) => store.productsList.productsList);
   let dispatch = useDispatch();
   let newCategory = categories.slice(0, 4);
   let newProducts = products.slice(0, 3);
+ 
 
   useEffect(() => {
-    dispatch(fetchCategory());
+    dispatch(fetchCategories());
   }, []);
 
-  useEffect(() => {
-    dispatch(fetchProducts());
-  }, []);
-
-  
+  useEffect(()=>{
+    dispatch(fetchProducts())
+  },[])
 
   return (
     <div>
@@ -44,13 +44,16 @@ function Main() {
       <div className="section_two">
         <div className="section_two_wrapper">
           <h3>Categories</h3>
-          <Link to='/category' className="btn_category"> All categories</Link>
+          <Link to="/categories/all" className="btn_category">
+            {" "}
+            All categories
+          </Link>
         </div>
         <div className="category_types">
           {newCategory.map((elem) => (
             <div>
               <img
-                src={`http://localhost:3333${elem.image}`}
+                src={baseUrl + elem.image}
                 alt="photo"
                 width="318"
                 height="330"
@@ -78,7 +81,7 @@ function Main() {
             {newProducts.map((elem) => (
               <div>
                 <img
-                  src={`http://localhost:3333${elem.image}`}
+                  src={baseUrl + elem.image}
                   alt="photo"
                   width="319"
                   height="279"
@@ -86,14 +89,17 @@ function Main() {
                 <div className="product_price">
                   <p className="price">{elem.price}$</p>
                   <p className="discont_price">{elem.discont_price}$</p>
-                  <p className="percent">-{elem.nprice}%</p>
+                  <p className="percent">
+                    -{Math.round(100 - (elem.discont_price * 100) / elem.price)}
+                    %
+                  </p>
                 </div>
                 <p className="product_title">{elem.title}</p>
               </div>
             ))}
           </div>
         </div>
-        <Footer/>
+        <Footer />
       </div>
     </div>
   );
