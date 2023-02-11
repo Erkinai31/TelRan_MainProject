@@ -3,10 +3,12 @@ import './Header.css';
 import logo from '../img/image1.svg';
 import basket from '../img/Vector.svg'
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
 
 export default function Header() {
+  const cart = useSelector(store => store.basket.basket)
   return (
       <div className='header'>
       <div className='header_wrapper'>
@@ -21,7 +23,12 @@ export default function Header() {
             <Link to='/products/all' className='list'>Stock</Link>
             <li className='list'>Contacts</li>
           </ul>
-          <Link to='/basket'><img src={basket} alt='basket' width='26.55' height='29.4'/></Link>
+          <Link to='/basket'>
+            <div>
+              <img src={basket} alt='basket' width='26.55' height='29.4'/>
+              {cart.reduce((sum, value ) => sum + value.count, 0)}
+            </div>
+            </Link>
         </nav>
         
       </div>

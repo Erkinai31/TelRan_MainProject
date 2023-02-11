@@ -28,7 +28,7 @@ function Category() {
                   <img
                     src={baseUrl + elem.image}
                     alt="photo"
-                    width="318"
+                    width="350"
                     height="330"
                   />
                   <p className="category_text">{elem.title}</p>

@@ -29,9 +29,9 @@ h4 {
   line-height: 130%;
   letter-spacing: 0.03em;
 }
-.product_info .price{
+.product_info .discont_price{
     font-size: 70px;
 }
-.product_info .discont_price,.percent{
+.product_info .price,.percent{
     font-size: 28px;
 }

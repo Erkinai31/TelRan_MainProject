@@ -149,19 +149,19 @@ h3 {
   
 }
 .price {
-  font-weight: 600;
-  font-size: 30px;
-  line-height: 130%;
-  letter-spacing: 0.03em;
-  color: #000000;
-}
-.discont_price {
   font-weight: 500;
   font-size: 20px;
   line-height: 130%;
   letter-spacing: 0.03em;
   text-decoration-line: line-through;
   color: #8b8b8b;
+}
+.discont_price {
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 130%;
+  letter-spacing: 0.03em;
+  color: #000000;
 }
 .percent {
   font-weight: 600;

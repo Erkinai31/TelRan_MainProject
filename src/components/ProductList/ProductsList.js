@@ -6,9 +6,10 @@ import { Link } from "react-router-dom";
 
 import { baseUrl } from "../..";
 import { fetchProducts } from "../../asyncAction/products";
+import { filterProductsAction, sortProductsAction } from "../../store/productsReducer";
 
 function ProductsList() {
-  let productsList = useSelector((store) => store.productsList.productsList);
+  let productsList = useSelector((store) => store.productsList.productsList).filter(elem=>elem.show);
   let dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchProducts());
@@ -21,6 +22,26 @@ function ProductsList() {
           <div>
             <h3>Products</h3>
           </div>
+          <div className="filtration">
+              <div className="price_filtration">
+                <p>Price</p>
+                <input type="number" placeholder="from" />
+                <input type="number" placeholder="to" />
+              </div>
+              <div className="checkbox">
+                <p>Items on sale</p>
+                <input onChange={(e) => dispatch(filterProductsAction(e.target.checked))} type={'checkbox'}/>
+              </div>
+              <div className="select_filtration">
+                <p>Sort:</p>
+                <select onChange={(e) => dispatch(sortProductsAction(e.target.value))}>
+                  <option value={0}>default</option>
+                  <option value={1}>Price Descending</option>
+                  <option value={2}>Ascending price</option>
+                  <option value={3}>alphabetically</option>
+                </select>
+              </div>
+            </div>
           <div className="category_types">
             {productsList.map((elem) => (
               <div>
@@ -33,14 +54,21 @@ function ProductsList() {
                 />
                 {elem.title}
                 </Link>
-                <div className="product_price">
-                  <p className="price">{elem.price}$</p>
-                  <p className="discont_price">{elem.discont_price}$</p>
-                  <p className="percent">
-                    -{Math.round(100 - (elem.discont_price * 100) / elem.price)}
+                <div>
+                    {(elem.price - elem.discont_price != 0) ?
+                    <div className="product_price">
+                    <p className="discont_price">{elem.discont_price}$</p>
+                    <p className="price">{elem.price}</p>
+                    <p className="percent">
+                    -
+                    {Math.round(
+                      100 - (elem.discont_price * 100) / elem.price
+                    )}
                     %
                   </p>
-                </div>
+                      </div>:<p className="discont_price">{elem.price}$</p>}
+                   
+                  </div>
               </div>
             ))}
           </div>

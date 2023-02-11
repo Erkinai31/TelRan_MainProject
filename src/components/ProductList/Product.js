@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom';
 import { fetchProducts } from '../../asyncAction/products';
 import { fetchOneProduct } from '../../asyncAction/oneProduct';
 import { baseUrl } from '../..';
-import { addMoreProductAction } from '../../store/basketReducer';
+import { addMoreProductAction, addProductAction } from '../../store/basketReducer';
 
 
 
@@ -17,13 +17,12 @@ function Product() {
     let dispatch = useDispatch();
     let { id } = useParams();
     const product = useSelector((store) => store.oneProduct.oneProduct);
-    let basket = useSelector(store=>store.basket.basket)
     
   
     useEffect(() => {
       dispatch(fetchProducts());
       dispatch(fetchOneProduct(id));
-    }, []);
+    }, [id]);
   return (
     <div className='category_part'>
         <div className='category_part_wrapper'>
@@ -42,13 +41,22 @@ function Product() {
               />
               </div>
               <div className='product_info'>
-                 <div className="product_price">
-                  <p className="price">{elem.price}$</p>
-                  <p className="discont_price">{elem.discont_price}$</p>
-                  <p className="percent">-{(Math.round(100-(elem.discont_price*100)/elem.price))}%</p>
-
-                </div>
-                <button onClick={()=> addMoreProductAction(elem.id)} className='btn'>Add to cart</button>
+              <div>
+                    {(elem.price - elem.discont_price != 0) ?
+                    <div className="product_price">
+                    <p className="discont_price">{elem.discont_price}$</p>
+                    <p className="price">{elem.price}</p>
+                    <p className="percent">
+                    -
+                    {Math.round(
+                      100 - (elem.discont_price * 100) / elem.price
+                    )}
+                    %
+                  </p>
+                      </div>:<p className="discont_price">{elem.price}$</p>}
+                   
+                  </div>
+                <button onClick={()=> dispatch(addProductAction(elem))} className='btn'>Add to cart</button>
                 <span className='line'></span>
                 <div>
                   <h4>Description</h4>

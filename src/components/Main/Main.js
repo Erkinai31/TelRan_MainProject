@@ -15,7 +15,9 @@ function Main() {
   let products = useSelector((store) => store.productsList.productsList);
   let dispatch = useDispatch();
   let newCategory = categories.slice(0, 4);
-  let newProducts = products.slice(0, 3);
+  let newProduct = products.filter(elem=>elem.price-elem.discont_price!==0);
+  let newProducts = newProduct.slice(0,3);
+
  
 
   useEffect(() => {
