@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import Header from "../Header/Header";
-import mainImg from "../img/image2.svg";
 import { useSelector, useDispatch } from "react-redux";
 import "./Main.css";
 import { fetchCategories} from "../../asyncAction/categories";
-import saleImg from "../img/image3.svg";
 import Footer from "../Footer/Footer";
 import { Link } from "react-router-dom";
 import { baseUrl } from "../..";
 import { fetchProducts } from "../../asyncAction/products";
+import NewYearSale from "./newYearSale/NewYearSale";
+import Discount from "./Discount/Discount";
 
 function Main() {
   let categories = useSelector((store) => store.categoriesList.categoriesList);
@@ -31,18 +31,7 @@ function Main() {
   return (
     <div>
       <Header />
-      <div className="section_one">
-        <div className="section_one_wrapper">
-          <h1>New year sale</h1>
-          <div>
-            <button className="btn btn_sale">all sales</button>
-            <button className="btn btn_more">more</button>
-          </div>
-        </div>
-        <div>
-          <img src={mainImg} width="900" height="600" />
-        </div>
-      </div>
+      <NewYearSale/>
       <div className="section_two">
         <div className="section_two_wrapper">
           <h3>Categories</h3>
@@ -65,17 +54,7 @@ function Main() {
           ))}
         </div>
       </div>
-      <div className="sale_section">
-        <div className="sale_section_wrapper">
-          <img src={saleImg} width="422" height="422" />
-          <div className="sale_section_text">
-            <p>Discount 5% </p>
-            <span className="sale_subtitle">for the first order</span>
-            <input type="number" placeholder="+49" />
-            <button>Get a discount</button>
-          </div>
-        </div>
-      </div>
+     <Discount/>
       <div>
         <div className="products_section">
           <h3>Stock</h3>
@@ -89,14 +68,20 @@ function Main() {
                   height="279"
                 />
                 <div className="product_price">
-                  <p className="price">{elem.price}$</p>
                   <p className="discont_price">{elem.discont_price}$</p>
+                  <p className="price">{elem.price}$</p>
                   <p className="percent">
                     -{Math.round(100 - (elem.discont_price * 100) / elem.price)}
                     %
                   </p>
                 </div>
-                <p className="product_title">{elem.title}</p>
+                <Link
+                  key={elem.id}
+                  to={`/products/${elem.id}`}
+                  className="product_title"
+                >
+                  {elem.title}
+                </Link>
               </div>
             ))}
           </div>

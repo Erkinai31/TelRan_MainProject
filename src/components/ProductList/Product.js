@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom';
 import { fetchProducts } from '../../asyncAction/products';
 import { fetchOneProduct } from '../../asyncAction/oneProduct';
 import { baseUrl } from '../..';
-import { addMoreProductAction, addProductAction } from '../../store/basketReducer';
+import { addElemsAction} from '../../store/basketReducer';
 
 
 
@@ -56,7 +56,7 @@ function Product() {
                       </div>:<p className="discont_price">{elem.price}$</p>}
                    
                   </div>
-                <button onClick={()=> dispatch(addProductAction(elem))} className='btn'>Add to cart</button>
+                <button onClick={()=> dispatch(addElemsAction(elem))} className='btn'>Add to cart</button>
                 <span className='line'></span>
                 <div>
                   <h4>Description</h4>

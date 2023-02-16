@@ -40,3 +40,24 @@ input {
   line-height: 130%;
   letter-spacing: 0.03em;
 }
+.img_cart {
+  position: relative;
+}
+.btn_cart {
+  opacity: 0;
+  position: absolute;
+  width: 270px;
+  height: 70px;
+  top:250px;
+  left:30px;
+  background: #f1fff1;
+  border: 2px solid #339933;
+  border-radius: 21px;
+  z-index: 1;
+  transition: opacity 0.3s;
+  color: #339933;
+}
+.img_cart:hover .btn_cart {
+  opacity: 1;
+  transition: opacity 0.3s;
+}

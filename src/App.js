@@ -4,7 +4,7 @@ import Category from "./components/Category/CategoriesList";
 import ProductsList from "./components/ProductList/ProductsList";
 import CategoryTypes from "./components/categoryTypes/CategoryTypes";
 import Product from "./components/ProductList/Product";
-import Basket from "./components/basket/Basket";
+import Basket from "./components/Basket/Basket";
 
 function App() {
   return (

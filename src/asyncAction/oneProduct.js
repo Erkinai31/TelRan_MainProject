@@ -1,5 +1,5 @@
 import { baseUrl } from "..";
-import { AddOneProductAction } from "../store/oneProductReducer";
+import { AddOneProductAction } from "../store/ProductReducer";
 
 export const fetchOneProduct = (id) => {
   return function (dispatch) {

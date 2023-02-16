@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import { baseUrl } from "../..";
 import { fetchCategories } from "../../asyncAction/categories";
 import { fetchCategory } from "../../asyncAction/category";
+import { addElemsAction } from "../../store/basketReducer";
 import { filterProductsAction, sortProductsAction } from "../../store/productsReducer";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
@@ -27,19 +28,25 @@ export default function CategoryTypes() {
     <div className="category_part">
       <div className="category_part_wrapper">
         <Header />
+        
         <div className="all_categories">
           <div>
             <h3>{id != "all" ? categories?.title : "All products"}</h3>
             <div className="category_types">
               {category.map((elem) => (
                 <div key={elem.id}>
-                  <img
+                  <div className="img_cart">
+                    <img
                     src={baseUrl + elem.image}
                     alt="photo"
                     width="318"
                     height="330"
+                    
                   />
-                  <Link to={`/products/${elem.id}`} className="category_text">
+                  <button onClick={()=> dispatch(addElemsAction(elem))} className="btn btn_cart">Add to cart</button>
+                 
+                  </div>
+                   <Link to={`/products/${elem.id}`} className="category_text">
                     {elem.title}
                   </Link>
                   <div>
