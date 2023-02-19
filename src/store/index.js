@@ -5,6 +5,7 @@ import { categoryReducer } from "./categoryReducer";
 import { oneProductReducer } from "./ProductReducer";
 import { productsReducer } from "./productsReducer";
 
+
 export const store = configureStore({
   reducer: {
     categoriesList: categoriesReducer,
@@ -12,5 +13,5 @@ export const store = configureStore({
     productsList: productsReducer,
     oneProduct: oneProductReducer,
     basket: basketReducer,
-  },
+  }
 });

@@ -10,7 +10,7 @@ function NewYearSale() {
           <h1>New year sale</h1>
           <div>
             <button className="btn btn_sale">all sales</button>
-            <button className="btn btn_more">more</button>
+            <button className="btn_more">more</button>
           </div>
         </div>
         <div>

@@ -6,7 +6,7 @@ import { baseUrl } from "../..";
 import { fetchCategories } from "../../asyncAction/categories";
 import { fetchCategory } from "../../asyncAction/category";
 import { addElemsAction } from "../../store/basketReducer";
-import { filterProductsAction, sortProductsAction } from "../../store/productsReducer";
+import Filtration from "../Filtration/Filtration";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import "./CategoryTypes.css";
@@ -14,7 +14,9 @@ import "./CategoryTypes.css";
 export default function CategoryTypes() {
   let dispatch = useDispatch();
   let { id } = useParams();
-  const category = useSelector((store) => store.category.category);
+  let productsList = useSelector(
+    (store) => store.productsList.productsList
+  ).filter((elem) => elem.show);
   const categories = useSelector(
     (store) => store.categoriesList.categoriesList
   ).find((elem) => elem.id == id);
@@ -30,10 +32,11 @@ export default function CategoryTypes() {
         <Header />
         
         <div className="all_categories">
+        <Filtration/>
           <div>
             <h3>{id != "all" ? categories?.title : "All products"}</h3>
             <div className="category_types">
-              {category.map((elem) => (
+              {productsList.map((elem) => (
                 <div key={elem.id}>
                   <div className="img_cart">
                     <img

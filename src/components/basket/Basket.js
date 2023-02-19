@@ -21,6 +21,9 @@ export default function Basket() {
     localStorage.setItem("goods", JSON.stringify(basket));
   }, [basket]);
 
+  let totalPrice = basket.reduce((total,item)=>{
+    return (total + item.discont_price) * item.count
+  },0)
   
 
   return (
@@ -77,7 +80,7 @@ export default function Basket() {
             <h4 className="order_title">Order Details</h4>
             <div className="order_sum">
               <p className="sum_text">Sum</p>
-              <p className="goods_sum">{}</p>
+              <p className="goods_sum">{totalPrice}$</p>
             </div>
             <input type="number" placeholder="Your phone number" className="order_input"/>
             <button className="btn">Order</button>

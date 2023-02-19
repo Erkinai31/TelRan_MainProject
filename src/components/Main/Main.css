@@ -1,7 +1,9 @@
+
+
 .section_one {
   display: flex;
   justify-content: space-between;
-  width: calc(1440px - 50px);
+  width: 1440px;
   padding-left: 50px;
   background-color: #a1e2eb;
   height: 600px;
@@ -25,8 +27,12 @@ h1 {
   color: black;
   border: white;
   margin-right: 15px;
+  width: 120px;
 }
 .btn_more {
+  padding: 8px;
+  width: 120px;
+  border-radius: 13px;
   font-weight: 700;
   font-size: 25px;
   line-height: 130%;
@@ -181,6 +187,8 @@ h3 {
   width:1200px;
   margin: 80px 32px 40px 33px ;
 }
-img{
-  border-radius:20px;
+
+
+@media screen and (max-width:700px) {
+
 }

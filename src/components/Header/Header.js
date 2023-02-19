@@ -14,15 +14,27 @@ export default function Header() {
       <div className='header_wrapper'>
         <div className='logo_button'>
           <Link to='/'><img src={logo} alt='logo' width='72' height='72'/></Link>
-        <Link to='/products/all' className='btn' >Catalog</Link>
+        <Link to='/products/all' className='btn'>Catalog</Link>
         </div>
-        <nav className='menu'>
-          <ul className='menu_wrapper'>
-            <Link to='/categories/all' className='list'>Categories</Link>
-            <li className='list'>Coupon</li>
-            <Link to='/products/all' className='list'>Stock</Link>
-            <li className='list'>Contacts</li>
+        <nav className='header_nav'>
+          <ul className='header_nav_list'>
+            <Link to='/categories/all' className='header_nav_item'>Categories</Link>
+            <li className='header_nav_item'>Coupon</li>
+            <Link to='/products/all' className='header_nav_item'>Stock</Link>
+            <li className='header_nav_item'>Contacts</li>
           </ul>
+          <div class="hamburger-menu">
+					<input id="menu__toggle" type="checkbox" />
+					<label class="menu__btn" for="menu__toggle">
+					  <span></span>
+					</label>
+					<ul class="menu__box">
+            <li class="menu__item">Categories</li>
+            <li class="menu__item">Coupon</li>
+            <li class="menu__item">Stock</li>
+            <li class="menu__item">Contacts</li>
+					</ul>
+				  </div>
           <Link to='/basket'>
             <div>
               <img src={basket} alt='basket' width='26.55' height='29.4'/>

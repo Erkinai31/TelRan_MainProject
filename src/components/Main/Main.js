@@ -46,8 +46,8 @@ function Main() {
               <img
                 src={baseUrl + elem.image}
                 alt="photo"
-                width="318"
-                height="330"
+                width="310"
+                height="280"
               />
               <p className="category_text">{elem.title}</p>
             </div>

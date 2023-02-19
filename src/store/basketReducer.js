@@ -2,16 +2,19 @@ let defaultState = {
   basket: JSON.parse(localStorage.getItem("goods")) ?? [],
 };
 
+
+
 const ADD_ELEMS = "ADD_ELEMS";
 const ADD_COUNT = "ADD_COUNT";
 const REM_COUNT = "REM_COUNT";
 const REM_ELEM = "REM_ELEM";
 
+
 export const basketReducer = (state = defaultState, action) => {
   switch (action.type) {
     case ADD_ELEMS:
       let newGood = state.basket.find((elem) => elem.id == action.payload.id);
-      if (newGood) {
+    if (newGood) {
         return {
           ...state,
           basket: state.basket.map((elem) => {
