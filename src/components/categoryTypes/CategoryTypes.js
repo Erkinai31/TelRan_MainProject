@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link,  useParams } from "react-router-dom";
 import { baseUrl } from "../..";
 import { fetchCategories } from "../../asyncAction/categories";
 import { fetchCategory } from "../../asyncAction/category";
@@ -20,10 +20,11 @@ export default function CategoryTypes() {
   const categories = useSelector(
     (store) => store.categoriesList.categoriesList
   ).find((elem) => elem.id == id);
+  
 
   useEffect(() => {
     dispatch(fetchCategories());
-    dispatch(fetchCategory(id));
+    dispatch(fetchCategory(id))
   }, [id]);
 
   return (

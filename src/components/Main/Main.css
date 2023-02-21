@@ -1,5 +1,4 @@
 
-
 .section_one {
   display: flex;
   justify-content: space-between;
@@ -50,8 +49,9 @@ h1 {
   text-decoration: none;
   letter-spacing: 0.03em;
   color: #8b8b8b;
-  width: 120px;
-  padding:10px;
+  width: 130px;
+  padding: 10px;
+  margin-bottom: 20px;
 }
 h3 {
   font-weight: 700;
@@ -61,7 +61,7 @@ h3 {
   padding-bottom: 20px;
 }
 .section_two {
-  height: 600px;
+  min-height: 530px;
   width: 1440px;
   padding: 40px 0 20px 20px;
 }
@@ -78,9 +78,6 @@ h3 {
   gap: 15px;
   text-align: center;
 }
-.products_section{
-  width:1440px;
-}
 .category_text {
   font-weight: 600;
   font-size: 18px;
@@ -88,7 +85,7 @@ h3 {
   letter-spacing: 0.03em;
   padding-top: 20px;
   text-decoration: none;
-  color:#000000;
+  color: #000000;
 }
 .sale_section {
   width: 1440px;
@@ -129,7 +126,7 @@ h3 {
 .sale_section_text button {
   width: 473px;
   height: 75.44px;
-  border: 2.39494px solid #ffffff;
+  border: 2px solid #ffffff;
   border-radius: 25.1468px;
   background-color: transparent;
   font-weight: 700;
@@ -145,14 +142,15 @@ h3 {
   letter-spacing: 0.03em;
   color: #ffffff;
 }
-.products_section{
-  padding:50px 300px 150px 30px;
+.products_section {
+  padding: 50px 300px 150px 30px;
 }
 .product_price {
   display: flex;
   justify-content: space-around;
-  width:319px
-  
+  width: 319px;
+  margin-top: 20px;
+  margin-bottom: 15px;
 }
 .price {
   font-weight: 500;
@@ -183,12 +181,32 @@ h3 {
   letter-spacing: 0.03em;
   color: #3a3a3a;
 }
-.all_categories{
-  width:1200px;
-  margin: 80px 32px 40px 33px ;
+.all_categories {
+  width: 1200px;
+  margin: 80px 32px 40px 33px;
 }
 
-
-@media screen and (max-width:700px) {
-
+@media screen and (max-width: 700px) {
+  .section_one{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+  }
+  .section_one img{
+    display: none;
+  }
+  .section_two_wrapper{
+    display: flex;
+    align-items: center;
+  }
+  .category_types,
+  .products {
+    display: grid;
+    grid-template-columns: repeat(2, 300px);
+    
+  }
+  .sale_section img{
+    display: none;
+  }
 }

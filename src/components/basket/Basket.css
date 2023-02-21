@@ -1,13 +1,12 @@
 .basket_main {
   width: 1440px;
-  margin: 0 auto;
-  padding-left: 40px;
+  
 }
 .basket_wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 820px;
+  width: 824px;
 }
 .basket_img {
   border-radius: 15%;
@@ -25,7 +24,6 @@
   flex-direction: column;
   justify-content: space-around;
   height: 200px;
-  width: 300px;
 }
 .basket_count {
   display: flex;

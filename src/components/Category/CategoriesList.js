@@ -24,7 +24,7 @@ function Category() {
           <div className="category_types">
             {categories.map((elem) => (
               <div>
-                <Link key={elem.id} to={`/categories/${elem.id}`}>
+                <Link key={elem.id} to={`/categories/${elem.id}`} state={{checked: false}}>
                   <img
                     src={baseUrl + elem.image}
                     alt="photo"

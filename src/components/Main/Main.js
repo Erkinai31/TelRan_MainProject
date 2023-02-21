@@ -10,6 +10,7 @@ import { fetchProducts } from "../../asyncAction/products";
 import NewYearSale from "./newYearSale/NewYearSale";
 import Discount from "./Discount/Discount";
 
+
 function Main() {
   let categories = useSelector((store) => store.categoriesList.categoriesList);
   let products = useSelector((store) => store.productsList.productsList);
@@ -42,6 +43,7 @@ function Main() {
         </div>
         <div className="category_types">
           {newCategory.map((elem) => (
+             <Link key={elem.id} to={`/categories/${elem.id}`}>
             <div>
               <img
                 src={baseUrl + elem.image}
@@ -51,6 +53,7 @@ function Main() {
               />
               <p className="category_text">{elem.title}</p>
             </div>
+            </Link>
           ))}
         </div>
       </div>
@@ -61,11 +64,16 @@ function Main() {
           <div className="products">
             {newProducts.map((elem) => (
               <div>
+                <Link
+                  key={elem.id}
+                  to={`/products/${elem.id}`}
+                  className="product_title"
+                >
                 <img
                   src={baseUrl + elem.image}
                   alt="photo"
-                  width="319"
-                  height="279"
+                  width="310"
+                  height="295"
                 />
                 <div className="product_price">
                   <p className="discont_price">{elem.discont_price}$</p>
@@ -75,11 +83,7 @@ function Main() {
                     %
                   </p>
                 </div>
-                <Link
-                  key={elem.id}
-                  to={`/products/${elem.id}`}
-                  className="product_title"
-                >
+                
                   {elem.title}
                 </Link>
               </div>

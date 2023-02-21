@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import './Header.css';
 import logo from '../img/image1.svg';
 import basket from '../img/Vector.svg'
@@ -7,20 +7,29 @@ import { useSelector } from 'react-redux';
 
 
 
+
 export default function Header() {
+  let ulRef = useRef()
   const cart = useSelector(store => store.basket.basket)
+
+    const handleClickScroll = () => {
+      const element = ulRef('coupon');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
   return (
       <div className='header'>
       <div className='header_wrapper'>
         <div className='logo_button'>
           <Link to='/'><img src={logo} alt='logo' width='72' height='72'/></Link>
-        <Link to='/products/all' className='btn'>Catalog</Link>
+        <Link to='/products/all'  className='btn'>Catalog</Link>
         </div>
         <nav className='header_nav'>
           <ul className='header_nav_list'>
             <Link to='/categories/all' className='header_nav_item'>Categories</Link>
-            <li className='header_nav_item'>Coupon</li>
-            <Link to='/products/all' className='header_nav_item'>Stock</Link>
+            <li onClick={handleClickScroll} className='header_nav_item'>Coupon</li>
+            <Link to='/products/all'  className='header_nav_item'>Stock</Link>
             <li className='header_nav_item'>Contacts</li>
           </ul>
           <div class="hamburger-menu">
@@ -42,7 +51,7 @@ export default function Header() {
             </div>
             </Link>
         </nav>
-        
+
       </div>
     </div>
   )
