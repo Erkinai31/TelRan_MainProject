@@ -5,10 +5,10 @@ import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import './Product.css'
 import { useParams } from 'react-router-dom';
-import { fetchProducts } from '../../asyncAction/products';
-import { fetchOneProduct } from '../../asyncAction/oneProduct';
+import { fetchOneProduct } from '../../asyncAction/product';
 import { baseUrl } from '../..';
 import { addElemsAction} from '../../store/basketReducer';
+import { fetchAllProductsList } from '../../asyncAction/category';
 
 
 
@@ -20,7 +20,7 @@ function Product() {
     
   
     useEffect(() => {
-      dispatch(fetchProducts());
+      dispatch(fetchAllProductsList());
       dispatch(fetchOneProduct(id));
     }, [id]);
   return (
@@ -36,8 +36,8 @@ function Product() {
               <img
                 src={baseUrl + elem.image}
                 alt="photo"
-                width="710"
-                height="710"
+                width="720"
+                height="720"
               />
               </div>
               <div className='product_info'>

@@ -8,8 +8,18 @@ input {
   border: 1px solid #000000;
   border-radius: 7px;
 }
+
 .price_filtration input {
   width: 103px;
+  padding-left: 20px;
+}
+.MinMaxPrice{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.price_filtration p{
+  padding-right: 20px;
 }
 .checkbox input {
   width: 40px;
@@ -60,4 +70,17 @@ input {
 .img_cart:hover .btn_cart {
   opacity: 1;
   transition: opacity 0.3s;
+}
+
+@media screen and (max-width:720px){
+  .filtration{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: 130px;
+  }
+  .all_categories_types{
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+  }
 }

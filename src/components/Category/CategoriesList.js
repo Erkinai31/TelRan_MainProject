@@ -6,7 +6,7 @@ import Footer from "../Footer/Footer";
 import { Link } from "react-router-dom";
 import { baseUrl } from "../..";
 
-function Category() {
+function CategoriesList() {
   let categories = useSelector((store) => store.categoriesList.categoriesList);
   let dispatch = useDispatch();
   useEffect(() => {
@@ -21,7 +21,7 @@ function Category() {
           <div>
             <h3>Categories</h3>
           </div>
-          <div className="category_types">
+          <div className="all_categories_types">
             {categories.map((elem) => (
               <div>
                 <Link key={elem.id} to={`/categories/${elem.id}`} state={{checked: false}}>
@@ -43,4 +43,4 @@ function Category() {
   );
 }
 
-export default Category;
+export default CategoriesList;

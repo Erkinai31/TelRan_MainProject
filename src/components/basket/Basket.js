@@ -42,7 +42,7 @@ export default function Basket() {
               </p>
             </div>
             {basket.map((elem) => (
-              <div>
+              <div className="basket_content__wrap">
                 <hr />
                 <div className="goods_part">
                   <div className="basket_wrapper">

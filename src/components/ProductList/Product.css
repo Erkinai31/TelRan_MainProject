@@ -5,6 +5,9 @@
   height: 710px;
   align-items: center;
 }
+.one_product img{
+  border-radius:20px;
+}
 .product_info {
   width: 412px;
   display: flex;
@@ -34,4 +37,17 @@ h4 {
 }
 .product_info .price,.percent{
     font-size: 28px;
+}
+
+@media screen and (max-width:720px){
+  .one_product{
+    width:700px;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+  .one_product img{
+    width:450px;
+    height: auto;
+  }
 }

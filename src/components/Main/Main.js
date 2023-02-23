@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { forwardRef, useEffect } from "react";
 import Header from "../Header/Header";
 import { useSelector, useDispatch } from "react-redux";
 import "./Main.css";
@@ -6,12 +6,12 @@ import { fetchCategories} from "../../asyncAction/categories";
 import Footer from "../Footer/Footer";
 import { Link } from "react-router-dom";
 import { baseUrl } from "../..";
-import { fetchProducts } from "../../asyncAction/products";
 import NewYearSale from "./newYearSale/NewYearSale";
 import Discount from "./Discount/Discount";
+import { fetchAllProductsList } from "../../asyncAction/category";
 
 
-function Main() {
+const Main=forwardRef((props,ref) => {
   let categories = useSelector((store) => store.categoriesList.categoriesList);
   let products = useSelector((store) => store.productsList.productsList);
   let dispatch = useDispatch();
@@ -19,19 +19,24 @@ function Main() {
   let newProduct = products.filter(elem=>elem.price-elem.discont_price!==0);
   let newProducts = newProduct.slice(0,3);
 
- 
-
   useEffect(() => {
     dispatch(fetchCategories());
   }, []);
 
   useEffect(()=>{
-    dispatch(fetchProducts())
+    dispatch(fetchAllProductsList())
   },[])
+
+  const handleClick = () => {
+    ref.current.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
+
 
   return (
     <div>
-      <Header />
+      <Header handleClick={handleClick} />
       <NewYearSale/>
       <div className="section_two">
         <div className="section_two_wrapper">
@@ -57,7 +62,7 @@ function Main() {
           ))}
         </div>
       </div>
-     <Discount/>
+     <Discount ref={ref}/>
       <div>
         <div className="products_section">
           <h3>Stock</h3>
@@ -90,10 +95,10 @@ function Main() {
             ))}
           </div>
         </div>
-        <Footer />
+        <Footer ref={ref}/>
       </div>
     </div>
   );
-}
+})
 
 export default Main;

@@ -8,3 +8,4 @@ export const fetchOneProduct = (id) => {
       .then((data) => dispatch(AddOneProductAction(data)));
   };
 };
+

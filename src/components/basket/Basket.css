@@ -1,5 +1,6 @@
 .basket_main {
   width: 1440px;
+  margin-left: 20px;
   
 }
 .basket_wrapper {
@@ -24,10 +25,11 @@
   flex-direction: column;
   justify-content: space-around;
   height: 200px;
+  width:250px;
 }
 .basket_count {
   display: flex;
-  width: 140px;
+  width: 130px;
   height: 40px;
   justify-content: space-around;
   border: 1px solid #000000;
@@ -107,4 +109,25 @@
   font-size: 24px;
   line-height: 130%;
   letter-spacing: 0.03em;
+}
+.basket_wrapper .discont_price, .price{
+  width:40px;
+}
+@media screen and (max-width:720px) {
+  .basket_main{
+    width:720px;
+  }
+  .basket_content {
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: space-around;
+    height: 1400px;
+  }
+  .basket_content__wrap{
+    width:680px;
+    margin:0 auto;
+  }
+  
+  
 }

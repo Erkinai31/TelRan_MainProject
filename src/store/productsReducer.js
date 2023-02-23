@@ -7,7 +7,7 @@ const defaultState = {
 export const productsReducer = (state = defaultState, action) => {
     switch (action.type) {
         case 'ADD_PRODUCTS':
-            return {...state, productsList:action.payload.map(elem => ({...elem, show: true})) }
+            return {...state, productsList:action.payload.map(elem => ({...elem, show: true, show2:true})) }
             case 'SORT_PRODUCTS':
                 if(action.payload == 1){
                     return {...state, productsList: state.productsList.slice().sort((crElem, nxElem) => nxElem.price - crElem.price)}
@@ -34,10 +34,10 @@ export const productsReducer = (state = defaultState, action) => {
                     return {...state, productsList: state.productsList.map(elem => ({...elem, show: true}))}
                 }
             case 'FILTER_PRODUCTS_PRICE':
-                state.productsList = state.productsList.map(elem=>({...elem,show:true}))
+                state.productsList = state.productsList.map(elem=>({...elem,show2:true}))
                     return {...state, productsList: state.productsList.map(elem => {
                         if (!(elem.discont_price >= action.payload.min_price && elem.discont_price <= action.payload.max_price)){
-                            elem.show = false
+                            elem.show2 = false
                         }
                         return elem
                     })}

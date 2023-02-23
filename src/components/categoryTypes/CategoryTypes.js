@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link,  useParams } from "react-router-dom";
 import { baseUrl } from "../..";
 import { fetchCategories } from "../../asyncAction/categories";
-import { fetchCategory } from "../../asyncAction/category";
+import { fetchAllProductsList, fetchAllSalesProductsList, fetchCategory } from "../../asyncAction/category";
 import { addElemsAction } from "../../store/basketReducer";
 import Filtration from "../Filtration/Filtration";
 import Footer from "../Footer/Footer";
@@ -16,15 +16,21 @@ export default function CategoryTypes() {
   let { id } = useParams();
   let productsList = useSelector(
     (store) => store.productsList.productsList
-  ).filter((elem) => elem.show);
+  ).filter((elem) => elem.show && elem.show2);
   const categories = useSelector(
     (store) => store.categoriesList.categoriesList
   ).find((elem) => elem.id == id);
   
 
   useEffect(() => {
-    dispatch(fetchCategories());
-    dispatch(fetchCategory(id))
+    if(id == 'all'){
+      dispatch(fetchAllProductsList())
+    }else if(id == 'sales'){
+      dispatch(fetchAllSalesProductsList())
+    }else if (!isNaN(+id)) {
+      dispatch(fetchCategory(id))
+  }
+    dispatch(fetchCategories());  
   }, [id]);
 
   return (

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { forwardRef, useRef } from 'react';
 import './Header.css';
 import logo from '../img/image1.svg';
 import basket from '../img/Vector.svg'
@@ -8,16 +8,11 @@ import { useSelector } from 'react-redux';
 
 
 
-export default function Header() {
-  let ulRef = useRef()
+export default function Header(props) {
   const cart = useSelector(store => store.basket.basket)
 
-    const handleClickScroll = () => {
-      const element = ulRef('coupon');
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
+
+
   return (
       <div className='header'>
       <div className='header_wrapper'>
@@ -28,9 +23,9 @@ export default function Header() {
         <nav className='header_nav'>
           <ul className='header_nav_list'>
             <Link to='/categories/all' className='header_nav_item'>Categories</Link>
-            <li onClick={handleClickScroll} className='header_nav_item'>Coupon</li>
-            <Link to='/products/all'  className='header_nav_item'>Stock</Link>
-            <li className='header_nav_item'>Contacts</li>
+            <li className='header_nav_item' onClick={props.handleClick}>Coupon</li>
+            <Link to='/categories/sales'  className='header_nav_item'>Stock</Link>
+            <li className='header_nav_item' onClick={props.handleClick}>Contacts</li>
           </ul>
           <div class="hamburger-menu">
 					<input id="menu__toggle" type="checkbox" />
@@ -38,10 +33,10 @@ export default function Header() {
 					  <span></span>
 					</label>
 					<ul class="menu__box">
-            <li class="menu__item">Categories</li>
-            <li class="menu__item">Coupon</li>
+            <li class="menu__item"><Link to='/categories/all'>Categories</Link></li>
+            <li class="menu__item" onClick={props.handleClick}>Coupon</li>
             <li class="menu__item">Stock</li>
-            <li class="menu__item">Contacts</li>
+            <li class="menu__item" onClick={props.handleClick}>Contacts</li>
 					</ul>
 				  </div>
           <Link to='/basket'>

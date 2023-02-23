@@ -25,7 +25,7 @@ function Filtration() {
       <div className="filtration">
         <div className="price_filtration">
           <p>Price</p>
-          <form ref={formRef} onChange={(e) => setMinMaxPrice(e)}>
+          <form ref={formRef} onChange={(e) => setMinMaxPrice(e)} className="MinMaxPrice">
             <input name="min_price" type={"number"} placeholder="from" />
             <input name="max_price" type={"number"} placeholder="to" />
           </form>

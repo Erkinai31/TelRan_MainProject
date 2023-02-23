@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import saleImg from "../../img/image3.svg";
-function Discount() {
+const Discount=forwardRef((props,ref)=> {
+  const {name} = props
   return (
-    <div>
+    <div ref={ref}>
        <div className="sale_section" id='coupon' >
         <div className="sale_section_wrapper">
           <img src={saleImg} width="422" height="422" />
@@ -17,5 +18,5 @@ function Discount() {
     </div>
   )
 }
-
+)
 export default Discount
